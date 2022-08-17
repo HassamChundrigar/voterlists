@@ -9,19 +9,24 @@ const VoterList = () => {
   const [schemeList, setSchemeList] = useState([]);
   let cnic = React.createRef();
   let block = React.createRef();
+  let uc = React.createRef();
   const [voters, setVoters] = useState([]);
   const [scheme, setScheme] = useState([]);
+  const [selectedUv, setSelectedUv] = useState("uc-2 OR.json");
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     console.log("Use Effect");
-    fetch("Data.json").then((response) => {
+    setIsLoading(true);
+    fetch(selectedUv).then((response) => {
       response.json().then((data) => setVoterList(data));
+      setIsLoading(false);
     });
 
     fetch("Scheme.json").then((response) => {
       // setVoterList(response);
       response.json().then((data) => setSchemeList(data));
     });
-  }, []);
+  }, [selectedUv]);
 
   function searchByCnic() {
     const cnicVal = cnic.current.value;
@@ -39,8 +44,27 @@ const VoterList = () => {
         .slice(0, 5)
     );
   }
+  function selectUc() {
+    setSelectedUv(uc.current.value);
+  }
   return (
     <div style={{ margin: "30px 10px" }}>
+      <span>Select UC </span>
+      <select ref={uc} onChange={selectUc}>
+        <option value="uc-2 OR.json">UC-2 Orangi</option>
+        <option value="uc-3 OR.json">UC-3 Orangi</option>
+        <option value="uc-4 OR.json">UC-4 Orangi</option>
+        <option value="uc-6 OR.json">UC-6 Orangi</option>
+        <option value="uc-7 OR.json">UC-7 Orangi</option>
+        <option value="uc-14 MP.json">UC-14 manghopir</option>
+        <option value="uc-3 NK.json">UC-3 North Karachi</option>
+        <option value="uc-12 NK.json">UC-12 North Karachi</option>
+        <option value="uc-5 DV.json">UC-5 Defence View</option>
+      </select>
+      <span style={{ display: isLoading == true ? "block" : "none" }}>
+        Loading...
+      </span>
+      <br></br>
       <input
         ref={cnic}
         placeholder="Search by cnic: 13 digits"
