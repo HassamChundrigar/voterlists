@@ -14,7 +14,8 @@ const VoterList = () => {
   useEffect(() => {
     console.log("Use Effect");
     fetch(
-      "https://storage.googleapis.com/staging.voterlists.appspot.com/static/Data.json"
+      "https://storage.googleapis.com/staging.voterlists.appspot.com/static/Data.json",
+      { mode: "no-cors" }
     ).then((response) => {
       // setVoterList(response);
       response.json().then((data) => setVoterList(data));
