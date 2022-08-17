@@ -12,7 +12,7 @@ const VoterList = () => {
   let uc = React.createRef();
   const [voters, setVoters] = useState([]);
   const [scheme, setScheme] = useState([]);
-  const [selectedUv, setSelectedUv] = useState("uc-2 OR.json");
+  const [selectedUv, setSelectedUv] = useState("UC-2OR.json");
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     console.log("Use Effect");
@@ -51,15 +51,15 @@ const VoterList = () => {
     <div style={{ margin: "30px 10px" }}>
       <span>Select UC </span>
       <select ref={uc} onChange={selectUc}>
-        <option value="uc-2 OR.json">UC-2 Orangi</option>
-        <option value="uc-3 OR.json">UC-3 Orangi</option>
-        <option value="uc-4 OR.json">UC-4 Orangi</option>
-        <option value="uc-6 OR.json">UC-6 Orangi</option>
-        <option value="uc-7 OR.json">UC-7 Orangi</option>
-        <option value="uc-14 MP.json">UC-14 manghopir</option>
-        <option value="uc-3 NK.json">UC-3 North Karachi</option>
-        <option value="uc-12 NK.json">UC-12 North Karachi</option>
-        <option value="uc-5 DV.json">UC-5 Defence View</option>
+        <option value="UC-2OR.json">UC-2 Orangi</option>
+        <option value="UC-3OR.json">UC-3 Orangi</option>
+        <option value="UC-4OR.json">UC-4 Orangi</option>
+        <option value="UC-6OR.json">UC-6 Orangi</option>
+        <option value="UC-7OR.json">UC-7 Orangi</option>
+        <option value="UC-14MP.json">UC-14 manghopir</option>
+        <option value="UC-3NK.json">UC-3 North Karachi</option>
+        <option value="UC-12NK.json">UC-12 North Karachi</option>
+        <option value="UC-5DV.json">UC-5 Defence View</option>
       </select>
       <span style={{ display: isLoading == true ? "block" : "none" }}>
         Loading...
