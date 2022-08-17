@@ -13,13 +13,10 @@ const VoterList = () => {
   const [scheme, setScheme] = useState([]);
   useEffect(() => {
     console.log("Use Effect");
-    fetch(
-      "https://storage.googleapis.com/staging.voterlists.appspot.com/static/Data.json",
-      { mode: "no-cors" }
-    ).then((response) => {
-      // setVoterList(response);
+    fetch("Data.json").then((response) => {
       response.json().then((data) => setVoterList(data));
     });
+
     fetch("Scheme.json").then((response) => {
       // setVoterList(response);
       response.json().then((data) => setSchemeList(data));
