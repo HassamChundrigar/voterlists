@@ -13,10 +13,12 @@ const VoterList = () => {
   const [scheme, setScheme] = useState([]);
   useEffect(() => {
     console.log("Use Effect");
-    fetch("Data.json").then((response) => {
-      // setVoterList(response);
-      response.json().then((data) => setVoterList(data));
-    });
+    fetch("https://storage.cloud.google.com/voterlists/Data.json").then(
+      (response) => {
+        // setVoterList(response);
+        response.json().then((data) => setVoterList(data));
+      }
+    );
     fetch("Scheme.json").then((response) => {
       // setVoterList(response);
       response.json().then((data) => setSchemeList(data));
