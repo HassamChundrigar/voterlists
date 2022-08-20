@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Voter List",
+  "name": "Jamaat e Islami Election Voter Lists",
   "icons": [
     {
       "src": "favicon.ico",
