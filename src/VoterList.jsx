@@ -128,7 +128,7 @@ const VoterList = () => {
           <option value="UC-1OR.json">UC-1 Orangi</option>
           <option value="UC-2OR.json">UC-2 Orangi</option>
           <option value="UC-3OR.json">UC-3 Orangi</option>
-          <option value="UC-4OR.json">UC-4 Orangi</option>
+          {/* <option value="UC-4OR.json">UC-4 Orangi</option> */}
           <option value="UC-5OR.json">UC-5 Orangi</option>
           <option value="UC-6OR.json">UC-6 Orangi</option>
           <option value="UC-7OR.json">UC-7 Orangi</option>
