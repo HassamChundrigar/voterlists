@@ -17,17 +17,19 @@ const VoterList = () => {
   const [selectedUv, setSelectedUv] = useState("UC-1OR.json");
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    console.log("Use Effect");
     setIsLoading(true);
-    fetch(selectedUv).then((response) => {
-      response.json().then((data) => setVoterList(data));
+    fetch("https://storage.googleapis.com/voterlists/"+selectedUv).then((response) => {
+      response.json().then((data) => {
+        setVoterList(data)
+      });
       setIsLoading(false);
     });
 
-    fetch("Scheme.json").then((response) => {
-      // setVoterList(response);
-      response.json().then((data) => setSchemeList(data));
-    });
+     fetch("https://storage.googleapis.com/voterlists/Scheme.json").then((response) =>{
+      response.json().then((data)=>{
+        setSchemeList(data)})
+     });
+
   }, [selectedUv]);
 
   function searchByCnic() {
@@ -41,8 +43,23 @@ const VoterList = () => {
         (x) => x.block.toString().indexOf(temp_voters[i].block.toString()) > -1
       );
       if (temp_scheme.length > 0) {
-        temp_voters[i]["station"] = temp_scheme[0].station;
-        temp_voters[i]["booth"] = temp_scheme[0].booth;
+        var station = ''
+        var booth = ''
+        temp_scheme.forEach((tmp) =>{
+          if((tmp.Male > 0) & (tmp.Female > 0)){
+            station+= '(M,F) '
+          }
+          else if(tmp.Male >0){
+            station+= '(M) '
+          }
+          else if(tmp.Female >0){
+            station+= '(F) '
+          }
+          station+= tmp.station +', '
+          booth += tmp.booth+ ', '
+        })
+        temp_voters[i]["station"] = station;
+        temp_voters[i]["booth"] = booth;
       }
     }
 
@@ -78,8 +95,23 @@ const VoterList = () => {
         (x) => x.block.toString().indexOf(tempVoters[i].block.toString()) > -1
       );
       if (temp_scheme.length > 0) {
-        tempVoters[i]["station"] = temp_scheme[0].station;
-        tempVoters[i]["booth"] = temp_scheme[0].booth;
+        var station = ''
+        var booth = ''
+        temp_scheme.forEach((tmp) =>{
+          if((tmp.Male > 0) & (tmp.Female > 0)){
+            station+= '(M,F) '
+          }
+          else if(tmp.Male >0){
+            station+= '(M) '
+          }
+          else if(tmp.Female >0){
+            station+= '(F) '
+          }
+          station+= tmp.station +', '
+          booth += tmp.booth+ ', '
+        })
+        tempVoters[i]["station"] = station;
+        tempVoters[i]["booth"] = booth;
       }
     }
 
@@ -97,6 +129,7 @@ const VoterList = () => {
           <option value="UC-2OR.json">UC-2 Orangi</option>
           <option value="UC-3OR.json">UC-3 Orangi</option>
           <option value="UC-4OR.json">UC-4 Orangi</option>
+          <option value="UC-5OR.json">UC-5 Orangi</option>
           <option value="UC-6OR.json">UC-6 Orangi</option>
           <option value="UC-7OR.json">UC-7 Orangi</option>
           <option value="UC-14MP.json">UC-14 manghopir</option>
