@@ -25,11 +25,14 @@ function App() {
       {!isLogin ?
         (
           <div style = {{display: "block", marginTop:'20%'}}>
-            <input ref={userNameRef} placeholder="user name" style = {{marginTop:'5px'}}></input>
-            <br></br>
-            <input ref={passwordRef} placeholder="password" style = {{marginTop:'5px'}}></input>
-            <br></br>
-            <button onClick = {loggin}style = {{marginTop:'5px'}}> LOGIN</button>
+            <form >
+              <input ref={userNameRef} type="text" placeholder="user name" style = {{marginTop:'5px'}}></input>
+              <br></br>
+              <input ref={passwordRef} type = "password" placeholder="password" style = {{marginTop:'5px'}}></input>
+              <br></br>
+              <button type="submit"  onClick = {loggin}style = {{marginTop:'5px'}}> LOGIN</button>
+            </form>
+           
           </div>  
         )
         :
