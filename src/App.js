@@ -5,7 +5,7 @@ import "./App.css";
 import VoterList from "./VoterList";
 
 const username = "admin"
-const password = "jikarachi"
+const password = "hafiznaeem"
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
